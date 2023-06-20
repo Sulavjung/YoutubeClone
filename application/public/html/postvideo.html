@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Video</title>
+  </head>
+  <body>
+    <header>
+      <h1>CSC 317 Website</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+          <li>
+            <a href="registration.html">Registration</a>
+          </li>
+          <li>
+            <a href="postVideo.html">Post Video</a>
+          </li>
+          <li>
+            <a href="viewpost.html">View Post</a>
+          </li>
+        </ul>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <section>
+        <header>
+          <h2>Post Video</h2>
+        </header>
+        <form>
+			<!-- p tag is being use to create block element that contains label and input. -->
+          <p>
+            <label for="postTitle">Title:</label>
+            <input type="text" id="postTitle" />
+          </p>
+          <p>
+            <label for="description">Description:</label>
+            <textarea id="description"></textarea>
+          </p>
+
+          <p>
+            <label for="videoPost">Upload Video:</label>
+            <span></span>
+            <input type="file" />
+          </p>
+
+          <p>
+            <input type="checkbox" />
+            I accept the Acceptable Use Policy.
+          </p>
+
+          <input type="submit" value="Post Video" />
+        </form>
+      </section>
+      <br />
+      <hr />
+    </main>
+
+    <footer>
+      <p>&copy; 2023-2025 Sulav Jung Hamal</p>
+    </footer>
+  </body>
+</html>
