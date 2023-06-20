@@ -36,29 +36,38 @@
           <h2>Post Video</h2>
         </header>
         <form>
-			<!-- p tag is being use to create block element that contains label and input. -->
-          <p>
-            <label for="postTitle">Title:</label>
-            <input type="text" id="postTitle" />
-          </p>
-          <p>
-            <label for="description">Description:</label>
-            <textarea id="description"></textarea>
-          </p>
+			<div>
+			  <label for="postTitle">Title:</label>
+			  <input type="text" id="postTitle" />
+			</div>
 
-          <p>
-            <label for="videoPost">Upload Video:</label>
-            <span></span>
-            <input type="file" />
-          </p>
+			<br>
+			
+			<div>
+			  <label for="description">Description:</label>
+			  <textarea id="description"></textarea>
+			</div>
 
-          <p>
-            <input type="checkbox" />
-            I accept the Acceptable Use Policy.
-          </p>
+			<br>
+		  
+			<div>
+			  <label for="videoPost">Upload Video:</label>
+			  <span></span>
+			  <input type="file" />
+			</div>
 
-          <input type="submit" value="Post Video" />
-        </form>
+			<br>
+		  
+			<div>
+			  <input type="checkbox" id="acceptPolicy" />
+			  <label for="acceptPolicy">I accept the Acceptable Use Policy.</label>
+			</div>
+
+			<br>
+		  
+			<input type="submit" value="Post Video" />
+		  </form>
+		  
       </section>
       <br />
       <hr />
