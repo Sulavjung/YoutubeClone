@@ -1,8 +1,334 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  color: #00B7FF;
+body {
+  font: 14px Helvetica, sans-serif, "Lucida Grande", Arial;
+}
+
+header > h1 {
+  font-size: x-large;
+  align-self: center;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  padding-bottom: 16px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+nav > ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: 20px;
+}
+
+nav > ul > li {
+  text-decoration: none;
+  padding: 10px;
+  margin-top: 16px;
+  list-style: none;
+  border: 2px solid red;
+  border-radius: 4px;
+  box-shadow: 5px 10px;
+}
+
+nav > ul > li:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+
+nav > ul > li > a {
+  text-decoration: none;
+  display: block;
+  color: black;
+  font-weight: bold;
+}
+
+.main {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.main-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-box {
+  margin: 40px 10px;
+  padding: 30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border-radius: 16px;
+}
+
+.centered-box > h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: xx-large;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > div {
+  margin: 4px 0px;
+}
+/* Form Label */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.inli {
+  display: inline;
+  margin: 4px;
+}
+
+/* Form Input */
+input[type="text"],
+input[type="email"],
+input[type="file"],
+input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* View Post CSS elements. */
+
+.videoPage {
+  padding: 20px;
+}
+
+.videoPage > h2 {
+  text-align: center;
+  padding: 10px;
+}
+
+.videoSection {
+  display: flex;
+  flex-direction: column;
+}
+
+/* title */
+.videoTitle {
+  font-size: x-large;
+  font-weight: bold;
+  padding: 8px 0px;
+}
+
+.authAndCreation {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Author */
+.videoAuthor,
+.videoCreationTime {
+  padding: 5px 10px;
+  padding-left: 0px;
+  margin: 8px 0px;
+  font-weight: bold;
+  background-color: #87ceeb;
+  border-radius: 8px;
+  color: white;
+  margin-right: 8px;
+}
+
+.videoAuthor::before {
+  content: "Author:";
+  background-color: #4caf50;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.videoCreationTime::before {
+  content: "Created on: ";
+  background-color: #4caf50;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.commentSide {
+  margin: 16px 0px;
+}
+
+.commentSide > p {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.commentSide > ol > li {
+  list-style: none;
+}
+
+.commentSide > ol > li > p {
+  padding: 5px 10px;
+  padding-left: 0px;
+  margin: 8px 0px;
+  margin-right: 8px;
+}
+
+.commentSide > ol > li > p > strong {
+  padding: 5px 10px;
+  font-weight: bold;
+  background-color: #87ceeb;
+  border-radius: 4px;
+  color: white;
+  margin-right: 8px;
+}
+
+.commentSide > ol > li > ul > li {
+  list-style: none;
+  padding-left: 40px;
+}
+
+.video {
+  position: relative;
+  display: flex;
+  height: auto;
+  justify-content: start;
+  align-items: start;
+  max-width: 1800px;
+}
+
+.video > video {
+  width: 100%;
+  height: auto;
+}
+
+/* Form Submit Button */
+.button {
+  display: inline-block;
+  margin: 10px 0px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+/* medium Screen */
+@media (min-width: 700px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 10px;
+    padding-bottom: 16px;
+  }
+
+  nav > ul {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav > ul > li {
+    padding: 2px;
+    padding-inline: 16px;
+    margin: 0 8px 0 8px;
+  }
+}
+
+/* Large Screen */
+@media (min-width: 999px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 100px;
+    padding-bottom: 16px;
+  }
+
+  nav > ul {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav > ul > li {
+    padding: 2px;
+    padding-inline: 16px;
+    margin: 0 8px 0 8px;
+  }
+
+  .centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .centered-box {
+    padding: 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .login-box-hw {
+    height: 500px;
+    width: 500px;
+  }
+
+  .registration-box-hw {
+    height: 700px;
+    width: 500px;
+  }
+
+  .videoSection {
+    flex-direction: row;
+  }
+
+  .commentSide {
+    padding: 0px 30px;
+  }
 }

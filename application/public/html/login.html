@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <header>
@@ -27,30 +28,31 @@
           </li>
         </ul>
       </nav>
-      <hr />
     </header>
 
     <main>
-      <section>
-        <h2>Login Form</h2>
+      <section class="centered">
+        <div class="centered-box login-box-hw">
+          <h2>Login</h2>
 
-        <form>
-          <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" />
-          </div>
+          <form>
+            <div>
+              <label for="username">Username:</label>
+              <input type="text" id="username" />
+            </div>
 
-          <br />
+            <br />
 
-          <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" />
-          </div>
+            <div>
+              <label for="password">Password:</label>
+              <input type="password" id="password" />
+            </div>
 
-          <br />
+            <br />
 
-          <input type="submit" value="Login" />
-        </form>
+            <input class="button" type="submit" value="Login" />
+          </form>
+        </div>
       </section>
       <hr />
     </main>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration</title>
+    <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
     <header>
@@ -27,12 +28,12 @@
           </li>
         </ul>
       </nav>
-      <hr />
     </header>
 
     <main>
-      <section>
-        <h2>Registration Form</h2>
+      <section class="centered">
+        <div class="centered-box registration-box-hw">
+          <h2>Registration</h2>
 
         <form>
           <div>
@@ -65,7 +66,7 @@
 
           <div>
             <input type="checkbox" id="ageCheckbox" />
-            <label for="ageCheckbox"
+            <label class="inli" for="ageCheckbox"
               >Agree that you are age of 13 or more.</label
             >
           </div>
@@ -74,13 +75,14 @@
 
           <div>
             <input type="checkbox" id="tosCheckbox" />
-            <label for="tosCheckbox">Accept TOS and Privacy rules.</label>
+            <label class="inli" for="tosCheckbox">Accept TOS and Privacy rules.</label>
           </div>
 
           <br />
 
-          <input type="submit" value="Register" />
+          <input type="submit" value="Register" class="button" />
         </form>
+        </div>
       </section>
       <br />
       <hr />

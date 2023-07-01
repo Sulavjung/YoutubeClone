@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Post</title>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <header>
@@ -27,39 +28,40 @@
           </li>
         </ul>
       </nav>
-      <hr />
     </header>
 
-    <main>
-      <section>
-        <h2>View Post</h2>
-        <form>
-          <p>
-            <strong>Title:</strong>
+    <main class="videoPage">
+      <h2>View Post</h2>
+      <section class="videoSection">
+        <div class="videoSide">
+          
+
+          <div class="video">
+            <video controls src="./assets/Random.mp4"></video>
+          </div>
+
+          <p class="videoTitle">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           </p>
 
-          <p>
-            <strong>Author:</strong>
-            Lorem ipsum.
-          </p>
-          <p>
-            <strong>Creation Time:</strong>
-            Jun 18, 2023
-          </p>
+          <div class="authAndCreation">
+            <p class="videoAuthor">
+              Lorem ipsum.
+             </p>
+             <p class="videoCreationTime">
+               Jun 18, 2023
+             </p>
+          </div>
+        </div>
 
-          <p>
-            <strong>Video:</strong>
-          </p>
-          <video controls src="./assets/ProgrammerMemes.mp4"></video>
-
+        <div class="commentSide">
           <p>
             <strong>Comments:</strong>
           </p>
-
+  
           <ol>
             <li>
-              <strong>sulav:</strong>
+              <p><strong>Sulav</strong></p>
               <ul>
                 <li>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. A
@@ -67,16 +69,16 @@
                 </li>
               </ul>
             </li>
-
+  
             <li>
-              <strong>david:</strong>
+              <p><strong>David</strong></p>
               <ul>
                 <li>Lorem ipsum dolor sit amet.</li>
               </ul>
             </li>
-
+  
             <li>
-              <strong>jeff:</strong>
+              <p><strong>Jeff</strong></p>
               <ul>
                 <li>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -85,10 +87,10 @@
               </ul>
             </li>
           </ol>
-        </form>
+        </div>
       </section>
       <br />
-      <hr />
+   
     </main>
 
     <footer>
