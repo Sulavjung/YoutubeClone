@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script defer src="../js/script.js"> </script>
+
   </head>
   <body>
-    <header>
+    <header id="header">
       <h1>CSC 317 Website</h1>
       <nav>
         <ul>
@@ -35,8 +37,8 @@
         <div class="centered-box registration-box-hw">
           <h2>Registration</h2>
 
-        <form>
-          <div>
+        <form id="registration">
+          <div id="usernameDiv">
             <label for="username">Username:</label>
             <input type="text" id="username" />
           </div>
@@ -45,19 +47,19 @@
 
           <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" />
+            <input type="email" id="email" required />
           </div>
 
           <br />
 
-          <div>
+          <div id="passwordDiv">
             <label for="password">Password:</label>
             <input type="password" id="password" />
           </div>
 
           <br />
 
-          <div>
+          <div id="confirmDiv">
             <label for="confirm">Confirm Password:</label>
             <input type="password" id="confirm" />
           </div>
@@ -65,7 +67,7 @@
           <br />
 
           <div>
-            <input type="checkbox" id="ageCheckbox" />
+            <input type="checkbox" id="ageCheckbox" required/>
             <label class="inli" for="ageCheckbox"
               >Agree that you are age of 13 or more.</label
             >
@@ -74,7 +76,7 @@
           <br />
 
           <div>
-            <input type="checkbox" id="tosCheckbox" />
+            <input type="checkbox" id="tosCheckbox" required/>
             <label class="inli" for="tosCheckbox">Accept TOS and Privacy rules.</label>
           </div>
 
@@ -93,3 +95,5 @@
     </footer>
   </body>
 </html>
+
+

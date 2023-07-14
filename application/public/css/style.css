@@ -9,16 +9,17 @@ body {
 }
 
 header > h1 {
-  font-size: x-large;
+  font-size: 32px;
+  font-weight: bold;
   align-self: center;
 }
 
 header {
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 10px;
   padding-bottom: 16px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 }
 
 nav > ul {
@@ -36,34 +37,89 @@ nav > ul > li {
   border: 2px solid red;
   border-radius: 4px;
   box-shadow: 5px 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 nav > ul > li:hover {
   background-color: aqua;
   cursor: pointer;
+  box-shadow: 0px 0px transparent;
+  transform: translateY(10px);
+
 }
+
 
 nav > ul > li > a {
   text-decoration: none;
   display: block;
   color: black;
   font-weight: bold;
+  font-size: large;
+  padding: 5px;
 }
+
 
 .main {
   background-color: #fff;
   padding: 0;
   margin: 0;
-  height: 100vh;
-  width: 100%;
+  
 }
 
-.main-page {
-  height: 100vh;
+
+#counterDiv{
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding: 90px;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; 
 }
+
+#counterDiv > p{
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.main-page{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 400px);
+  grid-auto-rows: 480px;
+  justify-content: space-between;
+  margin: 20px;
+  gap: 30px;
+}
+
+.main-page img { 
+  max-width: 400px;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.main-page p {
+  font-size: larger;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 0px 15px ;
+}
+
+.individualDiv {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  transition: all 0.7s;
+}
+
+.individualDiv:hover{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  transform: scale(1.018);
+  cursor: pointer;
+}
+
+
+
+
 
 .centered-box {
   margin: 40px 10px;
@@ -87,6 +143,7 @@ form {
 
 form > div {
   margin: 4px 0px;
+  margin-bottom: 30px;
 }
 /* Form Label */
 label {
@@ -108,7 +165,7 @@ input[type="password"] {
   display: block;
   width: 100%;
   padding: 10px;
-  margin-bottom: 30px;
+  
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -117,6 +174,20 @@ input[type="password"] {
 textarea {
   width: 100%;
   margin-bottom: 30px;
+}
+
+.error-border > input {
+  border: 2px solid red;
+}
+
+.error-message {
+  margin: 10px 0px;
+  color: red;
+}
+
+.error-message::before{
+  content: "☒ ";
+  color: red;
 }
 
 /* View Post CSS elements. */
@@ -281,13 +352,14 @@ footer {
   header {
     flex-direction: row;
     justify-content: space-between;
-    padding: 8px 100px;
-    padding-bottom: 16px;
+    padding: 16px 16px;
+
   }
 
   nav > ul {
     flex-direction: row;
     justify-content: space-between;
+    padding: 0;
   }
 
   nav > ul > li {
@@ -315,12 +387,12 @@ footer {
   }
 
   .login-box-hw {
-    height: 500px;
+    height: auto;
     width: 500px;
   }
 
   .registration-box-hw {
-    height: 700px;
+    height: auto;
     width: 500px;
   }
 
@@ -331,4 +403,21 @@ footer {
   .commentSide {
     padding: 0px 30px;
   }
+}
+
+@media (min-width: 1700px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 100px;
+  }
+
+  #counterDiv{
+    margin: 15px 100px;
+  }
+
+  .main-page{
+    margin: 15px 100px;
+  }
+
 }
