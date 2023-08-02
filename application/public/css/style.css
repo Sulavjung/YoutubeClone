@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+:root {
+  --hoverColor: #f3f3f3;
+  --hrColor: #e5e5e5;
+}
+
 body {
   font: 14px Helvetica, sans-serif, "Lucida Grande", Arial;
 }
@@ -12,6 +17,16 @@ header > h1 {
   font-size: 32px;
   font-weight: bold;
   align-self: center;
+  color: black;
+}
+
+header > div > h1 > a {
+  text-decoration: none;
+  color: #ff0000;
+}
+
+header > h1:hover {
+  cursor: pointer;
 }
 
 header {
@@ -19,69 +34,113 @@ header {
   flex-direction: column;
   padding: 10px;
   padding-bottom: 16px;
+}
 
+.logoCont {
+  display: flex;
+  align-items: center;
+}
+.menuHam {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  margin-right: 20px;
+  padding: 10px;
+  padding-top: 12px;
+  border-radius: 25%;
+}
+
+.menuHam:hover {
+  background-color: var(--hoverColor);
 }
 
 nav > ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-inline: 20px;
 }
 
 nav > ul > li {
+  list-style: none;
+}
+
+nav > ul > li > a {
   text-decoration: none;
-  padding: 10px;
-  margin-top: 16px;
   list-style: none;
   border: 2px solid red;
   border-radius: 4px;
   box-shadow: 5px 10px;
   transition: transform 0.3s, box-shadow 0.3s;
-}
-
-nav > ul > li:hover {
-  background-color: aqua;
-  cursor: pointer;
-  box-shadow: 0px 0px transparent;
-  transform: translateY(10px);
-
-}
-
-
-nav > ul > li > a {
   text-decoration: none;
   display: block;
   color: black;
   font-weight: bold;
   font-size: large;
-  padding: 5px;
+  padding: 10px;
+  padding-inline: 20px;
+  margin: 10px;
 }
 
+nav > ul > li > a:hover {
+  background-color: aqua;
+  cursor: pointer;
+  box-shadow: 0px 0px transparent;
+  transform: translateY(10px);
+}
+.navButton {
+  background-color: white;
+  text-decoration: none;
+  list-style: none;
+  border: 2px solid red;
+  border-radius: 4px;
+  box-shadow: 5px 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  display: block;
+  color: black;
+  font-weight: bold;
+  font-size: large;
+  padding: 10px;
+  padding-inline: 20px;
+}
+
+.navButton:hover {
+  background-color: aqua;
+  cursor: pointer;
+  box-shadow: 0px 0px transparent;
+  transform: translateY(10px);
+}
 
 .main {
   background-color: #fff;
   padding: 0;
   margin: 0;
-  
 }
 
+/* CSS to show the sidebar when it has the "show" class */
+.sidebar.show {
+  display: block;
+}
 
-#counterDiv{
+/* CSS to hide the sidebar when it doesn't have the "show" class */
+.sidebar:not(.show) {
+  display: none;
+}
+
+#counterDiv {
   display: flex;
   justify-content: center;
   padding: 90px;
-  margin: 15px;
   border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; 
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
-#counterDiv > p{
+#counterDiv > p {
   font-size: 64px;
   font-weight: bold;
 }
 
-.main-page{
+.main-page {
   display: grid;
   grid-template-columns: repeat(auto-fill, 400px);
   grid-auto-rows: 480px;
@@ -90,7 +149,7 @@ nav > ul > li > a {
   gap: 30px;
 }
 
-.main-page img { 
+.main-page img {
   max-width: 400px;
   max-height: 400px;
   overflow: hidden;
@@ -101,7 +160,7 @@ nav > ul > li > a {
   font-weight: bold;
   margin-top: 10px;
   margin-bottom: 5px;
-  padding: 0px 15px ;
+  padding: 0px 15px;
 }
 
 .individualDiv {
@@ -111,15 +170,64 @@ nav > ul > li > a {
   transition: all 0.7s;
 }
 
-.individualDiv:hover{
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+.individualDiv:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   transform: scale(1.018);
   cursor: pointer;
 }
 
+.contentDiv {
+  flex: 9;
+}
 
+.sidebar {
+  flex: 1;
+  padding: 5px;
+  padding-right: 40px;
+  
+}
 
+.sidebar > ul > li {
+  list-style: none;
+  font-size: large;
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 150px;
+  text-decoration: none;
+}
 
+.sidebar > ul > li > a {
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar > ul > li:hover {
+  background-color: var(--hoverColor);
+  cursor: pointer;
+}
+
+hr {
+  color: var(--hrColor);
+  height: 1px;
+}
+
+.sidebar > p {
+  padding: 10px;
+  padding-top: 20px;
+  font-size: small;
+  font-weight: bold;
+}
+
+.sidebar > a{
+  text-align: center;
+}
+
+.homeBody {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .centered-box {
   margin: 40px 10px;
@@ -165,7 +273,7 @@ input[type="password"] {
   display: block;
   width: 100%;
   padding: 10px;
-  
+
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -185,7 +293,7 @@ textarea {
   color: red;
 }
 
-.error-message::before{
+.error-message::before {
   content: "☒ ";
   color: red;
 }
@@ -342,8 +450,12 @@ footer {
 
   nav > ul > li {
     padding: 2px;
-    padding-inline: 16px;
+    padding-inline: 8px;
     margin: 0 8px 0 8px;
+  }
+
+  nav > ul > li > a {
+    margin: 0px;
   }
 }
 
@@ -352,8 +464,7 @@ footer {
   header {
     flex-direction: row;
     justify-content: space-between;
-    padding: 16px 16px;
-
+    padding: 16px 5px;
   }
 
   nav > ul {
@@ -364,8 +475,12 @@ footer {
 
   nav > ul > li {
     padding: 2px;
-    padding-inline: 16px;
+    padding-inline: 8px;
     margin: 0 8px 0 8px;
+  }
+
+  nav > ul > li > a {
+    margin: 0px;
   }
 
   .centered {
@@ -409,15 +524,62 @@ footer {
   header {
     flex-direction: row;
     justify-content: space-between;
-    padding: 16px 100px;
+    padding: 16px 5px;
   }
 
-  #counterDiv{
-    margin: 15px 100px;
+  .homeBody {
+    margin: 10px;
   }
 
-  .main-page{
-    margin: 15px 100px;
+  .main-page {
+    margin-inline: 0;
   }
+}
 
+.alert {
+  font-weight: bold;
+  border-radius: 8px;
+  overflow: hidden;
+  word-wrap: normal;
+  position: fixed;
+  bottom: 5%;
+  right: -100%;
+  border: 2px solid #f59e0b;
+  padding: 10px;
+  margin: 10px;
+  color: #ffffff;
+  z-index: 999; /* Make sure it appears above other content */
+  width: 20%;
+  animation: slideFromLeft 10s ease-in-out forwards; /* Use CSS animation */
+}
+
+.alert_error {
+  background-color: #ef4444;
+}
+
+.alert_error::before {
+  content: "\26A0";
+}
+
+.alert_success {
+  background-color: #45a049;
+}
+
+.alert_success::before {
+  content: "\2713";
+}
+
+@keyframes slideFromLeft {
+  0% {
+    right: -100%; /* Start off the screen on the left */
+  }
+  10% {
+    right: 0; /* Slide to the left edge of the screen */
+  }
+  90% {
+    right: 0; /* Stay visible for 10 seconds (adjust as needed) */
+  }
+  100% {
+    right: -100%; /* Slide back to the initial state */
+  }
 }

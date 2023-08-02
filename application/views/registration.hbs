@@ -3,37 +3,37 @@
     <div class="centered-box registration-box-hw">
       <h2>Registration</h2>
 
-      <form id="registration">
+      <form id="registration" action="/users/register" method="post" enctype="application/x-www-form-urlencoded">
         <div id="usernameDiv">
           <label for="username">Username:</label>
-          <input type="text" id="username" />
+          <input type="text" id="username" name="username" />
         </div>
 
         <br />
 
         <div>
           <label for="email">Email:</label>
-          <input type="email" id="email" required />
+          <input type="email" id="email" name="email" required />
         </div>
 
         <br />
 
         <div id="passwordDiv">
           <label for="password">Password:</label>
-          <input type="password" id="password" />
+          <input type="password" id="password" name="password"/>
         </div>
 
         <br />
 
         <div id="confirmDiv">
           <label for="confirm">Confirm Password:</label>
-          <input type="password" id="confirm" />
+          <input type="password" id="confirm" name="confirmPassword"/>
         </div>
 
         <br />
 
         <div>
-          <input type="checkbox" id="ageCheckbox" required />
+          <input type="checkbox" id="ageCheckbox" name="ageCheck" required />
           <label class="inli" for="ageCheckbox">Agree that you are age of 13 or
             more.</label>
         </div>
@@ -41,16 +41,14 @@
         <br />
 
         <div>
-          <input type="checkbox" id="tosCheckbox" required />
+          <input type="checkbox" id="tosCheckbox" name="tosCheck" required />
           <label class="inli" for="tosCheckbox">Accept TOS and Privacy rules.</label>
         </div>
 
         <br />
 
-        <input type="submit" value="Register" class="button" />
+        <input type="submit" id="registerButton"  value="Register" class="button" />
       </form>
     </div>
   </section>
-  <br />
-  <hr />
 </main>

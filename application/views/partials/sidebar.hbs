@@ -1,0 +1,17 @@
+<div class="sidebar" id="hiddenDiv">
+  <ul>
+    <li> <a href="/">Home</a></li>
+    <li><a href="/postvideo">Post Video</a></li>
+    <li><a href="/viewpost">View Post</a></li>
+    <li>Channel</li>
+    <li>History</li>
+  </ul>
+
+  <br>
+  <hr>
+  {{#if isLoggedIn}}{{else}}
+	<p>Sign in to like videos, comment, and subscribe.</p>
+	<a class="navButton" href="/login">Log In</a>
+  {{/if}}
+
+</div>

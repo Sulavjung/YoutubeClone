@@ -1,6 +1,8 @@
 "use strict";
+
 const mysql = require("mysql2/promise");
 
+console.log(process.env);
 function displayWarningMessage(warning) {
   switch (warning.Code) {
     case 1007:
@@ -14,18 +16,18 @@ function displayWarningMessage(warning) {
 
 async function getConnection() {
   return await mysql.createConnection({
-    host: "localhost",
+    host: process.env.DB_HOST,
     //TODO make sure to change to the user you want to use
-    user: "root", //Your DB username
+    user: process.env.DB_USER, //Your DB username
     //TODO make sure to change to the correct password for your user.
-    password: "0322", //Your DB password
+    password: process.env.DB_PASSWORD, //Your DB password
   });
 }
 
 async function makeDatabase(connection) {
   //TODO make sure to change yourdbnamehere
   const [result, _] = await connection.query(
-    "CREATE DATABASE IF NOT EXISTS yourdbnamehere;"
+    `CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME};`
   );
   if (result && result.warningStatus > 0) {
     const [warningResult, _] = await connection.query("SHOW WARNINGS");
@@ -38,7 +40,17 @@ async function makeDatabase(connection) {
 async function makeUsersTable(connection) {
   const [result, _] = await connection.query(
     // Users Table SQL Goes here
-    `
+    `CREATE TABLE IF NOT EXISTS ${process.env.DB_NAME}.users (
+      id int unsigned NOT NULL AUTO_INCREMENT,
+      username varchar(64) NOT NULL,
+      password varchar(128) NOT NULL,
+      email varchar(128) NOT NULL,
+      createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      PRIMARY KEY (id),
+      UNIQUE KEY id_UNIQUE (id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+    
     `
   );
 
@@ -53,7 +65,22 @@ async function makeUsersTable(connection) {
 async function makePostsTable(connection) {
   const [result, _] = await connection.query(
     // Posts Table SQL Goes here
-    ``
+    `CREATE TABLE  IF NOT EXISTS ${process.env.DB_NAME}.posts (
+      id int unsigned NOT NULL AUTO_INCREMENT,
+      title varchar(255) NOT NULL,
+      description varchar(45) NOT NULL,
+      video varchar(4096) NOT NULL,
+      thumbnail varchar(4096) NOT NULL,
+      createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      fk_userId int unsigned NOT NULL,
+      PRIMARY KEY (id),
+      UNIQUE KEY id_UNIQUE (id),
+      KEY post_author_idx (fk_userId),
+      CONSTRAINT post_author FOREIGN KEY (fk_userId) REFERENCES users (id) ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+    `
   );
   if (result && result.warningStatus > 0) {
     const [warningResult, _] = await connection.query("SHOW WARNINGS");
@@ -66,7 +93,22 @@ async function makePostsTable(connection) {
 async function makeCommentsTable(connection) {
   const [result, _] = await connection.query(
     // Comments Table SQL Goes here
-    ` 
+    `CREATE TABLE  IF NOT EXISTS ${process.env.DB_NAME}.comments (
+      id int unsigned NOT NULL AUTO_INCREMENT,
+      fk_userId int unsigned NOT NULL,
+      text varchar(45) NOT NULL,
+      createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      fk_posted int unsigned NOT NULL,
+      PRIMARY KEY (id),
+      UNIQUE KEY id_UNIQUE (id),
+      KEY comment_author_idx (fk_userId),
+      KEY comment_post_idx (fk_posted),
+      CONSTRAINT comment_author FOREIGN KEY (fk_userId) REFERENCES users (id) ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+      CONSTRAINT comment_post FOREIGN KEY (fk_posted) REFERENCES posts (id) ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
     `
   );
   if (result && result.warningStatus > 0) {
@@ -83,7 +125,7 @@ async function makeCommentsTable(connection) {
     connection = await getConnection();
     await makeDatabase(connection); // make DB
     //TODO make sure to change yourdbnamehere
-    await connection.query("USE yourdbnamehere"); // set new DB to the current DB
+    await connection.query(`USE ${process.env.DB_NAME}`); // set new DB to the current DB
     await makeUsersTable(connection); // try to make user table
     await makePostsTable(connection); // try to make posts table
     await makeCommentsTable(connection); // try to make comments table

@@ -3,17 +3,17 @@
     <div class="centered-box registration-box-hw">
       <h2>Post Video</h2>
 
-      <form>
+      <form action="/posts/create" method="post" enctype="multipart/form-data">
         <div>
           <label for="postTitle">Title:</label>
-          <input type="text" id="postTitle" />
+          <input type="text" id="postTitle" name="title"/>
         </div>
 
         <br />
 
         <div>
           <label for="description">Description:</label>
-          <textarea id="description"></textarea>
+          <textarea id="description" name="description"></textarea>
         </div>
 
         <br />
@@ -21,13 +21,13 @@
         <div>
           <label for="videoPost">Upload Video:</label>
           <span></span>
-          <input type="file" />
+          <input type="file" name="file" />
         </div>
 
         <br />
 
         <div>
-          <input type="checkbox" id="acceptPolicy" />
+          <input type="checkbox" id="acceptPolicy" name="accept"/>
           <label class="inli" for="acceptPolicy">I accept the Acceptable Use
             Policy.</label>
         </div>
@@ -38,6 +38,4 @@
       </form>
     </div>
   </section>
-  <br />
-  <hr />
 </main>
