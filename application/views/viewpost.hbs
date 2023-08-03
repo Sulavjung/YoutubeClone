@@ -4,19 +4,21 @@
     <div class="videoSide">
 
       <div class="video">
-        <video controls src="/public/html/assets/Random.mp4"></video>
+        <video controls >
+          <source src="/{{post.video}}" type="video/mp4" />
+        </video>
       </div>
 
       <p class="videoTitle">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        {{post.title}}
       </p>
 
       <div class="authAndCreation">
         <p class="videoAuthor">
-          Lorem ipsum.
+          {{post.username}}
         </p>
         <p class="videoCreationTime">
-          Jun 18, 2023
+          {{ formatDateString post.createdAt}}
         </p>
       </div>
     </div>
@@ -59,3 +61,5 @@
   <br />
 
 </main>
+
+{{log this}}

@@ -19,8 +19,6 @@ router.get('/postvideo', isLoggedIn, function(req, res, next) {
 router.get('/registration', function(req, res, next) {
   res.render('registration', { title: 'Registration', name:"Sulav Jung Hamal", js:["script.js"] });
 });
-router.get('/viewpost', function(req, res, next) {
-  res.render('viewpost', { title: 'View Post', name:"Sulav Jung Hamal",  });
-});
+
 
 module.exports = router;
