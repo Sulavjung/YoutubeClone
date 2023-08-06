@@ -64,7 +64,38 @@ router.post(
 
 //localhost:3000/posts/:id
 router.get('/:id(\\d+)', getPostByID ,function(req, res, next) {
-  res.render('viewpost', { title: 'View Post', name:"Sulav Jung Hamal",  });
+  res.render('viewpost', { title: res.locals.post.title , name:"Sulav Jung Hamal",  });
 });
+
+//localhost:3000/posts/search?key=term
+router.get('/search', async function(req, res, next){
+  var {key} = req.query;
+  const searchValue = `%${key}%`
+  try{
+    const [results, _] = await db.execute(
+      `SELECT p.id, p.title, p.description, p.thumbnail, p.createdAt, u.id AS userId, u.username, CONCAT_WS(" ", p.title, p.description) AS haystack
+      FROM posts p
+      JOIN users u ON p.fk_userId = u.id
+      HAVING haystack LIKE ?`,
+      [searchValue]
+    );    
+
+      if(results && results.length > 0){
+        res.locals.count = results.length;
+        res.locals.results = results;
+        return res.render('index', {title: key});
+      } else {
+        res.status(200).json({
+          count: 0,
+          results: []
+        })
+      }
+
+      return res.status(200).json(results);
+  }catch(err){
+    next(err);
+  }
+
+})
 
 module.exports = router;

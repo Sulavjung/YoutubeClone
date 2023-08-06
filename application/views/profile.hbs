@@ -1,0 +1,53 @@
+
+<div class="profilePageDiv">
+  <div class="profileInfo">
+    <div class="profileImg">
+      <img
+        class="profImage"
+        src="https://api.multiavatar.com/{{username}}.png"
+        alt=""
+      />
+    </div>
+    <div class="profileMeta">
+      <div class="profileMetaData">
+        {{! Username }}
+        <p class="videoUsername profileName">{{username}}</p>
+        {{! Number of Videos }}
+        {{! "username" }}
+        <p class="userId">@{{username}} <span> {{count}} videos</span> </p>
+        {{! Description }}
+        <p class="profileBio">
+          There is no description here but if any, will go here.
+        </p>
+      </div>
+      {{#if isCurrentUserProfile}}
+        <div class="profileButtons">
+          <a class="navButton" href="/postvideo">Post Video</a>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <br />
+  <hr />
+  <br />
+
+  {{! Videos Posted }}
+  <div class="profileVideos">
+    <div class="videoCont">
+      {{#each results}}
+        <a class="videoLinkCard" href="/posts/{{id}}">
+          <div class="videoCard" id={{id}}>
+            <img src="/{{thumbnail}}" alt={{id}} />
+            <div class="videoMeta">
+              <div>
+                {{! Title }}
+                <p class="videoTitle">{{title}}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      {{/each}}
+    </div>
+  </div>
+</div>

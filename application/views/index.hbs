@@ -1,15 +1,38 @@
 <main>
-  
-  <section>
-    <div>
-    <div id="counterDiv">
-    <!-- Here goes the Photo Counter -->
-  </div>
 
-  <section class="main-page" id="photo-display">
-    <!-- <p>[Main Page Content will go in this section.]</p> -->
-  </section>
-  <hr />
-  </div>
+  <section>
+    <div class="videoCont">
+      {{#each results}}
+        <div class="videoLinkCard">
+          <div class="videoCard" id={{id}}>
+            <a href="/posts/{{id}}"><img src="/{{thumbnail}}" alt={{id}} /></a>
+            <div class="videoMeta">
+              {{! Image }}
+              <a href="/users/profile/{{userId}}"><img
+                class="navProfileImg"
+                src="https://api.multiavatar.com/{{username}}.png"
+                alt=""
+              /></a>
+              <div>
+                {{! Title }}
+                <a href="/posts/{{id}}"><p class="videoTitle">{{title}}</p></a>
+                {{! Username }}
+                <a href="/users/profile/{{userId}}"><p class="videoUsername">{{username}}</p></a>
+                {{! These should be in column but it should be in row with the above img. }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+
+      {{! <div id="counterDiv">
+        <!-- Here goes the Photo Counter -->
+      </div> }}
+
+      {{!  <section class="main-page" id="photo-display">
+        <!-- <p>[Main Page Content will go in this section.]</p> -->
+      </section> }}
+    </div>
   </section>
 </main>
+

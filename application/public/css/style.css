@@ -7,10 +7,12 @@
 :root {
   --hoverColor: #f3f3f3;
   --hrColor: #e5e5e5;
+  --buttonColor: #84cc16;
 }
 
 body {
   font: 14px Helvetica, sans-serif, "Lucida Grande", Arial;
+
 }
 
 header > h1 {
@@ -30,15 +32,20 @@ header > h1:hover {
 }
 
 header {
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    "logo menu"
+    "search search";
   flex-direction: column;
   padding: 10px;
   padding-bottom: 16px;
+  margin-inline: 10px;
 }
 
 .logoCont {
   display: flex;
   align-items: center;
+  grid-area: logo;
 }
 .menuHam {
   border: none;
@@ -54,10 +61,54 @@ header {
   background-color: var(--hoverColor);
 }
 
+.searchCont {
+  display: flex;
+  justify-content: right;
+  margin: 4px;
+  border-radius: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  grid-area: search;
+}
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  border-radius: 24px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.searchbar > input {
+  padding-inline: 20px !important;
+  border: none !important;
+}
+
+.searchbar > input:focus {
+  outline: none !important;
+}
+
+.searchbar > button {
+  border-radius: 28px;
+  padding-inline: 20px;
+  cursor: pointer;
+  background-color: var(--buttonColor);
+  border: none;
+  font-weight: bold;
+  color: white;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  grid-area: menu;
+  justify-self: end;
+}
+
 nav > ul {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  width: 100%;
 }
 
 nav > ul > li {
@@ -109,6 +160,69 @@ nav > ul > li > a:hover {
   cursor: pointer;
   box-shadow: 0px 0px transparent;
   transform: translateY(10px);
+}
+
+.username::first-letter {
+  text-transform: capitalize;
+}
+.navProfileImg {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  width: 40px;
+
+  aspect-ratio: 1;
+  background-size: cover;
+  border-radius: 50%;
+  margin-inline: 8px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.profileImage{
+  width: 40px;
+  aspect-ratio: 1;
+  background-size: cover;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  align-items: center;
+}
+
+.profileButton{
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  aspect-ratio: 1;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+  padding: 10px 16px 40px 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 14px 20px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .main {
@@ -163,6 +277,35 @@ nav > ul > li > a:hover {
   padding: 0px 15px;
 }
 
+.videoCont {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.videoCard {
+  margin: 10px;
+  overflow: hidden;
+  text-overflow: clip;
+  
+}
+
+.videoCard > a > img {
+  width: 100%;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+}
+
+.videoCard > img{
+  width: 100%;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+}
+
 .individualDiv {
   border-radius: 15px;
   overflow: hidden;
@@ -185,7 +328,6 @@ nav > ul > li > a:hover {
   flex: 1;
   padding: 5px;
   padding-right: 40px;
-  
 }
 
 .sidebar > ul > li {
@@ -220,7 +362,7 @@ hr {
   font-weight: bold;
 }
 
-.sidebar > a{
+.sidebar > a {
   text-align: center;
 }
 
@@ -316,9 +458,35 @@ textarea {
 
 /* title */
 .videoTitle {
-  font-size: x-large;
+  font-size: 24px;
   font-weight: bold;
   padding: 8px 0px;
+}
+
+.videoUsername::first-letter {
+  text-transform: capitalize;
+}
+
+.videoUsername {
+  color: #606060;
+}
+
+.videoLinkCard {
+  width: 100%;
+  overflow-wrap: break-word;
+  text-decoration: none;
+  color: black;
+}
+
+.videoLinkCard a {
+  text-decoration: none;
+  color: black;
+}
+
+.videoMeta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .authAndCreation {
@@ -428,16 +596,129 @@ textarea {
 
 /* Footer */
 footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   background-color: #333;
   color: #fff;
   text-align: center;
   padding: 10px;
 }
 
+.alert {
+  font-weight: bold;
+  border-radius: 8px;
+  overflow: hidden;
+  word-wrap: normal;
+  position: fixed;
+  bottom: 5%;
+  right: -100%;
+  border: 2px solid #f59e0b;
+  padding: 10px;
+  margin: 10px;
+  color: #ffffff;
+  z-index: 999; /* Make sure it appears above other content */
+  width: 20%;
+  animation: slideFromLeft 10s ease-in-out forwards; /* Use CSS animation */
+}
+
+.alert_error {
+  background-color: #ef4444;
+}
+
+.alert_error::before {
+  content: "\26A0";
+}
+
+.alert_success {
+  background-color: #45a049;
+}
+
+.alert_success::before {
+  content: "\2713";
+}
+
+@keyframes slideFromLeft {
+  0% {
+    right: -100%;
+  }
+  10% {
+    right: 0;
+  }
+  90% {
+    right: 0;
+  }
+  100% {
+    right: -100%;
+  }
+}
+
+.profilePageDiv {
+  padding: 10px;
+  padding-inline: 30px;
+  max-width: 1700px;
+  margin: auto;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.profileImg {
+  background-size: cover;
+}
+
+.profImage {
+  background-size: cover;
+  width: 128px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.profileMeta{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profileMetaData {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profileName {
+  font-size: 32px;
+  color: black;
+  font-weight: bold;
+}
+
+.userId {
+  font-size: 12px;
+  font-weight: bold;
+  color: #606060;
+}
+
+.userId > span{
+  padding-inline-start: 10px;
+}
+
+.profileBio {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 /* medium Screen */
-@media (min-width: 700px) {
+@media screen and (min-width: 610px) {
   header {
-    flex-direction: row;
+    display: grid;
+    grid-template-areas: "logo search menu";
     justify-content: space-between;
     padding: 8px 10px;
     padding-bottom: 16px;
@@ -457,10 +738,23 @@ footer {
   nav > ul > li > a {
     margin: 0px;
   }
+
+  .videoCont {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 10px;
+  }
+
+  .profileMeta{
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 /* Large Screen */
-@media (min-width: 999px) {
+@media screen and (min-width: 999px) {
   header {
     flex-direction: row;
     justify-content: space-between;
@@ -518,9 +812,14 @@ footer {
   .commentSide {
     padding: 0px 30px;
   }
+
+  .videoCont {
+    grid-template-columns: repeat(3, 1fr);
+    flex-direction: column;
+  }
 }
 
-@media (min-width: 1700px) {
+@media screen and (min-width: 1700px) {
   header {
     flex-direction: row;
     justify-content: space-between;
@@ -534,52 +833,9 @@ footer {
   .main-page {
     margin-inline: 0;
   }
-}
 
-.alert {
-  font-weight: bold;
-  border-radius: 8px;
-  overflow: hidden;
-  word-wrap: normal;
-  position: fixed;
-  bottom: 5%;
-  right: -100%;
-  border: 2px solid #f59e0b;
-  padding: 10px;
-  margin: 10px;
-  color: #ffffff;
-  z-index: 999; /* Make sure it appears above other content */
-  width: 20%;
-  animation: slideFromLeft 10s ease-in-out forwards; /* Use CSS animation */
-}
-
-.alert_error {
-  background-color: #ef4444;
-}
-
-.alert_error::before {
-  content: "\26A0";
-}
-
-.alert_success {
-  background-color: #45a049;
-}
-
-.alert_success::before {
-  content: "\2713";
-}
-
-@keyframes slideFromLeft {
-  0% {
-    right: -100%; /* Start off the screen on the left */
-  }
-  10% {
-    right: 0; /* Slide to the left edge of the screen */
-  }
-  90% {
-    right: 0; /* Stay visible for 10 seconds (adjust as needed) */
-  }
-  100% {
-    right: -100%; /* Slide back to the initial state */
+  .videoCont {
+    grid-template-columns: repeat(5, 1fr);
+    flex-direction: column;
   }
 }

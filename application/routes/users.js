@@ -3,6 +3,7 @@ var bcrypt = require("bcrypt");
 var router = express.Router();
 const db = require("../config/database");
 const validator = require("validator");
+const { isLoggedIn, isCurrentUserProfile } = require("../middleware/auth");
 
 //localhost:3000/users/register
 router.post("/register", async function (req, res, next) {
@@ -109,5 +110,49 @@ router.post("/logout", function (req, res, next) {
     return res.redirect("/");
   });
 });
+
+router.get('/profile/:id(\\d+)',isLoggedIn, isCurrentUserProfile,  async function(req, res, next) {
+  var {id} = req.params;
+  try {
+
+    var [users, __] = await db.execute(
+      `select username from users where id = ?`,
+      [id]
+    );
+
+    const user = users[0];
+
+    if (!user) {
+      req.flash("error", "User does not exist!");
+      return req.session.save(function (err) {
+        return res.redirect("/");
+      });
+    } else {
+      res.locals.username = user.username;
+    }
+
+
+    const [results, _] = await db.execute(`
+      SELECT p.id, p.title, p.description, p.thumbnail, p.video, p.createdAt, u.username
+      FROM posts p
+      JOIN users u ON p.fk_userId = u.id
+      WHERE u.id = ?
+      ORDER BY p.createdAt DESC
+      LIMIT 20;
+    `, [id]);
+
+    if (results && results.length > 0) {
+      res.locals.count = results.length;
+      res.locals.results = results;
+    } else {
+      res.locals.results = [];
+      res.locals.count = 0;
+    }
+  } catch (err) {
+    next(err);
+  }
+  res.render('profile', { title: 'Profile', name: "Sulav Jung Hamal" });
+});
+
 
 module.exports = router;
