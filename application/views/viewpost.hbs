@@ -1,62 +1,113 @@
 <main class="videoPage">
-  <h2>View Post</h2>
   <section class="videoSection">
     <div class="videoSide">
 
       <div class="video">
-        <video controls >
+        <video controls>
           <source src="/{{post.video}}" type="video/mp4" />
         </video>
       </div>
 
+      {{! Title }}
       <p class="videoTitle">
         {{post.title}}
       </p>
 
-      <div class="authAndCreation">
-        <p class="videoAuthor">
-          {{post.username}}
+      {{! User and other info.  }}
+      <div class="videoPageMeta">
+        <img
+          class="navProfileImg"
+          id="vidoeProfile"
+          src="https://api.multiavatar.com/{{post.username}}.png"
+          alt=""
+        />
+
+        <div class="authAndCreation">
+          <p class="videoAuthor">
+            {{post.username}}
+          </p>
+          <p class="videoCreationTime">
+            {{formatDateString post.createdAt}}
+          </p>
+        </div>
+      </div>
+
+      {{! Description of the Video }}
+      <div class="videoDescription">
+        <p class="fw-bold">Description</p>
+        <p>{{post.description}}</p>
+      </div>
+
+      {{! Comments }}
+      <div class="commentSide">
+        <p class="fw-bold">
+          Comments
         </p>
-        <p class="videoCreationTime">
-          {{ formatDateString post.createdAt}}
-        </p>
+
+        {{! Form to add comment. }}
+        <div class="newComment">
+          {{#if isLoggedIn}}
+              <img
+              class="navProfileImg"
+              id="vidoeProfile"
+              src="https://api.multiavatar.com/{{user.username}}.png"
+              alt=""
+            />
+          {{/if}}
+            <input id="commentInput" type="text" placeholder="Add Comment">
+            <button id="commentButton" data-postid="{{post.id}}">Comment</button>
+        </div>
+
+        <div id="comments">
+          {{#each post.comments}}
+          <div class="commentMeta" id = "message-{{id}}">
+            <img
+              class="navProfileImg"
+              id="vidoeProfile"
+              src="https://api.multiavatar.com/{{username}}.png"
+              alt=""
+            />
+            <div class="usernameAndComment">
+              <p class="commentUsername">@{{username}} <span>{{formatDateString createdAt}}</span></p>
+              <p class="comment">{{text}}</p>
+            </div>
+          </div>
+        {{/each}}
+        <div id="commentsList">
+          {{!-- Empty div to change the inner html. --}}
+        </div>
+        </div>
+
       </div>
     </div>
 
-    <div class="commentSide">
-      <p>
-        <strong>Comments:</strong>
-      </p>
-
-      <ol>
-        <li>
-          <p><strong>Sulav</strong></p>
-          <ul>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. A veniam
-              delectus maxime in. Dolorem, quos!
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <p><strong>David</strong></p>
-          <ul>
-            <li>Lorem ipsum dolor sit amet.</li>
-          </ul>
-        </li>
-
-        <li>
-          <p><strong>Jeff</strong></p>
-          <ul>
-            <li>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Repellat, veritatis?
-            </li>
-          </ul>
-        </li>
-      </ol>
+    <div class="suggestionSide">
+      {{#each results}}
+        <div class="videoLinkCard">
+          <div class="videoCard" id={{id}}>
+            <a href="/posts/{{id}}"><img src="/{{thumbnail}}" alt={{id}} /></a>
+            <div class="videoMeta">
+              {{! Image }}
+              <a href="/users/profile/{{userId}}"><img
+                  class="navProfileImg"
+                  src="https://api.multiavatar.com/{{username}}.png"
+                  alt=""
+                /></a>
+              <div>
+                {{! Title }}
+                <a href="/posts/{{id}}"><p class="videoTitle">{{title}}</p></a>
+                {{! Username }}
+                <a href="/users/profile/{{userId}}"><p
+                    class="videoUsername"
+                  >{{username}}</p></a>
+                {{! These should be in column but it should be in row with the above img. }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
     </div>
+
   </section>
   <br />
 

@@ -1,7 +1,7 @@
 var express = require("express");
 const router = express.Router();
 var multer = require("multer");
-const { makeThumbnail, getPostByID } = require("../middleware/posts");
+const { makeThumbnail, getPostByID, getCommentsByPostId, getRecentPosts } = require("../middleware/posts");
 const { isLoggedIn } = require("../middleware/auth");
 const db = require("../config/database");
 
@@ -63,8 +63,8 @@ router.post(
 );
 
 //localhost:3000/posts/:id
-router.get('/:id(\\d+)', getPostByID ,function(req, res, next) {
-  res.render('viewpost', { title: res.locals.post.title , name:"Sulav Jung Hamal",  });
+router.get('/:id(\\d+)', getPostByID, getCommentsByPostId, getRecentPosts ,function(req, res, next) {
+  res.render('viewpost', { title: res.locals.post.title , name:"Sulav Jung Hamal", js:["commentScript.js"]   });
 });
 
 //localhost:3000/posts/search?key=term

@@ -2,7 +2,7 @@ var pathToFFMPEG = require("ffmpeg-static");
 var promisify = require('util').promisify;
 var exec = promisify(require("child_process").exec);
 var db = require('../config/database');
-const { async } = require("regenerator-runtime");
+
 module.exports = {
     makeThumbnail: async function (req, res, next) {
         if (!req.file) {
@@ -63,6 +63,24 @@ module.exports = {
 			}
 		}catch(err){
 			next(err);
+		}
+	}, 
+	getCommentsByPostId: async function (req, res, next){
+		const { id } = req.params;
+		console.log(id);
+
+		try {
+			var [results, _] = await db.execute(`
+			SELECT c.id, c.text, c.createdAt, u.username
+			FROM comments c
+			JOIN users u ON c.fk_userId = u.id
+			WHERE c.fk_posted = ?;
+		  `, [id]);
+
+			res.locals.post.comments = results;
+			next();
+		} catch (error) {
+			next(error)
 		}
 	}
 }

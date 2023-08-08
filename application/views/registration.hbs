@@ -1,4 +1,5 @@
 <main>
+
   <section class="centered">
     <div class="centered-box registration-box-hw">
       <h2>Registration</h2>
@@ -7,6 +8,7 @@
         <div id="usernameDiv">
           <label for="username">Username:</label>
           <input type="text" id="username" name="username" />
+          {{usernameInvalid}}
         </div>
 
         <br />
@@ -21,6 +23,7 @@
         <div id="passwordDiv">
           <label for="password">Password:</label>
           <input type="password" id="password" name="password"/>
+          {{passwordInvalid}}
         </div>
 
         <br />

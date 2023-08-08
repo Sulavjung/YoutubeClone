@@ -12,7 +12,6 @@
 
 body {
   font: 14px Helvetica, sans-serif, "Lucida Grande", Arial;
-
 }
 
 header > h1 {
@@ -178,7 +177,7 @@ nav > ul > li > a:hover {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
-.profileImage{
+.profileImage {
   width: 40px;
   aspect-ratio: 1;
   background-size: cover;
@@ -190,13 +189,12 @@ nav > ul > li > a:hover {
   align-items: center;
 }
 
-.profileButton{
+.profileButton {
   border: none;
   border-radius: 50%;
   width: 40px;
   aspect-ratio: 1;
 }
-
 
 .dropdown-content {
   display: none;
@@ -289,7 +287,6 @@ nav > ul > li > a:hover {
   margin: 10px;
   overflow: hidden;
   text-overflow: clip;
-  
 }
 
 .videoCard > a > img {
@@ -299,7 +296,7 @@ nav > ul > li > a:hover {
   background-position: center;
 }
 
-.videoCard > img{
+.videoCard > img {
   width: 100%;
   border-radius: 12px;
   background-size: cover;
@@ -443,24 +440,31 @@ textarea {
 /* View Post CSS elements. */
 
 .videoPage {
-  padding: 20px;
-}
-
-.videoPage > h2 {
-  text-align: center;
-  padding: 10px;
+  padding: 8px;
+  width: 100%;
 }
 
 .videoSection {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  gap: 20px;
+}
+
+.videoPageMeta {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  padding: 10px 0px;
 }
 
 /* title */
 .videoTitle {
   font-size: 24px;
   font-weight: bold;
-  padding: 8px 0px;
+  padding: 10px 0px 2px 0px;
 }
 
 .videoUsername::first-letter {
@@ -487,76 +491,108 @@ textarea {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0px 0px 20px 0px;
 }
 
 .authAndCreation {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 /* Author */
-.videoAuthor,
-.videoCreationTime {
-  padding: 5px 10px;
-  padding-left: 0px;
-  margin: 8px 0px;
+.videoAuthor {
+  font-size: 24px;
   font-weight: bold;
-  background-color: #87ceeb;
-  border-radius: 8px;
-  color: white;
-  margin-right: 8px;
 }
 
-.videoAuthor::before {
-  content: "Author:";
-  background-color: #4caf50;
-  border-radius: 8px;
-  padding: 5px 10px;
-  margin-left: 0px;
-  margin-right: 10px;
+.videoAuthor::first-letter {
+  text-transform: capitalize;
 }
 
-.videoCreationTime::before {
-  content: "Created on: ";
-  background-color: #4caf50;
+.videoCreationTime {
+  color: #606060;
+}
+
+.videoDescription {
+  padding: 10px;
+  background: #f2f2f2;
   border-radius: 8px;
-  padding: 5px 10px;
-  margin-left: 0px;
-  margin-right: 10px;
+}
+
+.videoDescription > p {
+  font-size: 14px;
+  padding: 10px;
+}
+
+.fw-bold {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .commentSide {
   margin: 16px 0px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .commentSide > p {
-  font-size: larger;
+  font-size: 14px;
+  padding: 20px 10px;
+}
+
+.newComment {
+  display: flex;
+  flex-direction: row;
+  margin: 16px 0px;
+}
+
+#commentInput {
+  background-color: #f2f2f2;
+  border: 1px solid rgb(0, 0, 0);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-radius: 0;
+  outline: none;
+}
+
+#commentButton {
+  border-radius: 28px;
+  padding-inline: 20px;
+  cursor: pointer;
+  background-color: var(--buttonColor);
+  border: none;
   font-weight: bold;
-}
-
-.commentSide > ol > li {
-  list-style: none;
-}
-
-.commentSide > ol > li > p {
-  padding: 5px 10px;
-  padding-left: 0px;
-  margin: 8px 0px;
-  margin-right: 8px;
-}
-
-.commentSide > ol > li > p > strong {
-  padding: 5px 10px;
-  font-weight: bold;
-  background-color: #87ceeb;
-  border-radius: 4px;
   color: white;
-  margin-right: 8px;
 }
 
-.commentSide > ol > li > ul > li {
-  list-style: none;
-  padding-left: 40px;
+#commentButton:hover{
+  background-color: #4caf50;
+}
+
+.commentMeta {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+}
+
+.usernameAndComment {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.commentUsername {
+  font-weight: bold;
+  padding: 4px 0px;
+}
+
+.commentUsername > span {
+  padding-inline-start: 8px;
+  font-weight: normal;
+  color: #606060;
+  font-size: 12px;
 }
 
 .video {
@@ -566,11 +602,14 @@ textarea {
   justify-content: start;
   align-items: start;
   max-width: 1800px;
+  aspect-ratio: 16/9;
+  background: black;
+  margin-top: 10px;
 }
 
 .video > video {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 /* Form Submit Button */
@@ -681,7 +720,7 @@ footer {
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-.profileMeta{
+.profileMeta {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -705,7 +744,7 @@ footer {
   color: #606060;
 }
 
-.userId > span{
+.userId > span {
   padding-inline-start: 10px;
 }
 
@@ -745,7 +784,7 @@ footer {
     margin: 10px;
   }
 
-  .profileMeta{
+  .profileMeta {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
@@ -807,10 +846,6 @@ footer {
 
   .videoSection {
     flex-direction: row;
-  }
-
-  .commentSide {
-    padding: 0px 30px;
   }
 
   .videoCont {

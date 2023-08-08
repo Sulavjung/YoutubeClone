@@ -2,12 +2,19 @@ var express = require("express");
 var bcrypt = require("bcrypt");
 var router = express.Router();
 const db = require("../config/database");
-const validator = require("validator");
 const { isLoggedIn, isCurrentUserProfile } = require("../middleware/auth");
+const { validateUsername, validateEmail, validatePassword } = require("../middleware/validation");
 
 //localhost:3000/users/register
-router.post("/register", async function (req, res, next) {
+router.post("/register", validateUsername, validateEmail, validatePassword, async function (req, res, next) {
   var { username, email, password } = req.body;
+
+  if(res.locals.usernameInvalid || res.locals.passwordInvalid || res.locals.emailInvalid){
+    req.flash("error", "Server side validation failed. Please try with different credentials.");
+      return req.session.save(function (err) {
+        return res.redirect("/registration");
+      });
+  }
 
   try {
     //server side validation
@@ -22,7 +29,10 @@ router.post("/register", async function (req, res, next) {
     );
 
     if (results && results.length > 0) {
-      return res.status(400).send("Username already exists");
+      req.flash("error", "Username already exist");
+      return req.session.save(function(err){
+        return res.redirect("/registration");
+      })
     }
 
     var [results, _] = await db.execute(
@@ -31,8 +41,10 @@ router.post("/register", async function (req, res, next) {
     );
 
     if (results && results.length > 0) {
-      console.log("email already exists");
-      return res.status(400).send("Email already exists");
+      req.flash("error", "Email already exists");
+      return req.session.save(function(err){
+        return res.redirect("/registration");
+      })
     }
 
     //insert into db.
@@ -60,6 +72,9 @@ router.post("/register", async function (req, res, next) {
 //localhost:3000/users/login
 router.post("/login", async function (req, res, next) {
   var { username, password } = req.body;
+  var redirectTo = req.session.redirectTo || '/';
+
+  console.log(redirectTo);
 
   try {
     //1. We are validating the username
@@ -91,7 +106,7 @@ router.post("/login", async function (req, res, next) {
       };
       req.flash("success", "You are successfully logged in.");
       return req.session.save(function (err) {
-        return res.redirect("/");
+        return res.redirect(redirectTo);
       });
     } else {
       return req.session.save(function (err) {
