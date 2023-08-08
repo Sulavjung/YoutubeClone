@@ -32,7 +32,7 @@ if(commentButton){
 				} else {
 					var htmlString = "";
 					htmlString = buildCommentDiv(data);
-					commentsList.innerHTML = htmlString;
+					commentsList.innerHTML += htmlString;
 					commentInput.value = "";
 					window.location.replace(`#message-${data.commentId}`)
 				}
