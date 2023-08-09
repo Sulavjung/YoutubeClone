@@ -1,0 +1,20 @@
+<div class="videoLinkCard">
+          <div class="videoCard" id={{id}}>
+            <a href="/posts/{{id}}"><img src="/{{thumbnail}}" alt={{id}} /></a>
+            <div class="videoMeta">
+              {{! Image }}
+              <a href="/users/profile/{{userId}}"><img
+                class="navProfileImg"
+                src="https://api.multiavatar.com/{{username}}.png"
+                alt=""
+              /></a>
+              <div>
+                {{! Title }}
+                <a href="/posts/{{id}}"><p class="videoTitle">{{title}}</p></a>
+                {{! Username }}
+                <a href="/users/profile/{{userId}}"><p class="videoUsername">{{username}}</p></a>
+                {{! These should be in column but it should be in row with the above img. }}
+              </div>
+            </div>
+          </div>
+        </div>

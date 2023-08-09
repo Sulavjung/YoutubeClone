@@ -24,7 +24,6 @@ module.exports = {
     if (req.session.user) {
       next();
     } else {
-      req.session.redirectTo = req.originalUrl; 
       req.flash("error", "User must be logged in.");
       return req.session.save(function (err) {
         if (err) next(err);

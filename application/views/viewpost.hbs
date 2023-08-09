@@ -12,15 +12,14 @@
       <p class="videoTitle">
         {{post.title}}
       </p>
-
+      {{log this}}
       {{! User and other info.  }}
       <div class="videoPageMeta">
-        <img
-          class="navProfileImg"
-          id="vidoeProfile"
-          src="https://api.multiavatar.com/{{post.username}}.png"
-          alt=""
-        />
+        <a href="/users/profile/{{post.userId}}"><img
+            class="navProfileImg"
+            src="https://api.multiavatar.com/{{post.username}}.png"
+            alt=""
+          /></a>
 
         <div class="authAndCreation">
           <p class="videoAuthor">
@@ -47,35 +46,34 @@
         {{! Form to add comment. }}
         <div class="newComment">
           {{#if isLoggedIn}}
-              <img
-              class="navProfileImg"
-              id="vidoeProfile"
-              src="https://api.multiavatar.com/{{user.username}}.png"
-              alt=""
-            />
+            <a href="/users/profile/{{user.userId}}"><img
+                class="navProfileImg"
+                src="https://api.multiavatar.com/{{user.username}}.png"
+                alt=""
+              /></a>
           {{/if}}
-            <input id="commentInput" type="text" placeholder="Add Comment">
-            <button id="commentButton" data-postid="{{post.id}}">Comment</button>
+          <input id="commentInput" type="text" placeholder="Add Comment" />
+          <button id="commentButton" data-postid="{{post.id}}">Comment</button>
         </div>
 
         <div id="comments">
           {{#each post.comments}}
-          <div class="commentMeta" id = "message-{{id}}">
-            <img
-              class="navProfileImg"
-              id="vidoeProfile"
-              src="https://api.multiavatar.com/{{username}}.png"
-              alt=""
-            />
-            <div class="usernameAndComment">
-              <p class="commentUsername">@{{username}} <span>{{formatDateString createdAt}}</span></p>
-              <p class="comment">{{text}}</p>
+            <div class="commentMeta" id="message-{{id}}">
+              <a href="/users/profile/{{userId}}"><img
+                  class="navProfileImg"
+                  src="https://api.multiavatar.com/{{username}}.png"
+                  alt=""
+                /></a>
+              <div class="usernameAndComment">
+                <p class="commentUsername">@{{username}}
+                  <span>{{formatDateString createdAt}}</span></p>
+                <p class="comment">{{text}}</p>
+              </div>
             </div>
+          {{/each}}
+          <div id="commentsList">
+            {{! Empty div to change the inner html. }}
           </div>
-        {{/each}}
-        <div id="commentsList">
-          {{!-- Empty div to change the inner html. --}}
-        </div>
         </div>
 
       </div>
@@ -112,4 +110,3 @@
   <br />
 
 </main>
-

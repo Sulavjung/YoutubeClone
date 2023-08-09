@@ -15,11 +15,11 @@
       </svg>
     </button>
 
-    <h1><a href="/">CSC 317 Website</a></h1>
+    <h1><a href="/">CSC</a></h1>
   </div>
   <div class="searchCont">
     <form class="searchbar" method="get" action="/posts/search">
-      <input type="text" name="key" />
+      <input type="text" name="key" value="{{searchKey}}" />
       <button type="submit">Search</button>
     </form>
   </div>
@@ -27,9 +27,15 @@
     <ul>
       {{#if isLoggedIn}}
 
+        <a href="/postvideo"><img class="postVideoIcon"
+            src="../../public/assets/uploadVideoLogo.png"
+            alt=""
+          /></a>
+
         <div class="dropdown">
           <button class="profileButton">
-            <img class="profileImage"
+            <img
+              class="profileImage"
               src="https://api.multiavatar.com/{{user.username}}.png"
               alt=""
             />
@@ -37,7 +43,8 @@
           <div class="dropdown-content">
             <a href="#" class="username">{{user.username}}</a>
 
-            <a class="navButton" href="/users/profile/{{user.userId}}">View Profile</a>
+            <a class="navButton" href="/users/profile/{{user.userId}}">View
+              Profile</a>
 
             <form
               action="/users/logout"

@@ -36,6 +36,12 @@ app.engine(
         return new Date(dateString).toLocaleString("en-us", {
         timeStyle: "medium", dateStyle: "medium"
         });
+      },
+      isGreaterThan: function(a, b) {
+        if(a > b) { return true; } else {return false};
+      },
+      isEqualToZero: function(a){
+        if(a == 0) {return true;} else { return false;}; 
       }
     }, //adding new helpers to handlebars for extra functionality
   })

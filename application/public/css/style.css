@@ -15,7 +15,7 @@ body {
 }
 
 header > h1 {
-  font-size: 32px;
+  font-size: 22px;
   font-weight: bold;
   align-self: center;
   color: black;
@@ -36,7 +36,7 @@ header {
     "logo menu"
     "search search";
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 0px;
   padding-bottom: 16px;
   margin-inline: 10px;
 }
@@ -47,13 +47,15 @@ header {
   grid-area: logo;
 }
 .menuHam {
+  display: flex;
+  align-items: center;
   border: none;
   background-color: white;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 5px;
   padding: 10px;
-  padding-top: 12px;
   border-radius: 25%;
+  color: black;
 }
 
 .menuHam:hover {
@@ -126,8 +128,8 @@ nav > ul > li > a {
   color: black;
   font-weight: bold;
   font-size: large;
-  padding: 10px;
-  padding-inline: 20px;
+  padding: 5px;
+  padding-inline: 10px;
   margin: 10px;
 }
 
@@ -175,6 +177,25 @@ nav > ul > li > a:hover {
   border-radius: 50%;
   margin-inline: 8px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+ul > a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.postVideoIcon {
+  width: 40px;
+  aspect-ratio: 1;
+  background-size: cover;
+  margin-right: 20px;
+  padding: 5px 5px 5px 5px;
+  border-radius: 50%;
+}
+
+.postVideoIcon:hover{
+  background-color: #E5E5E5;
 }
 
 .profileImage {
@@ -278,15 +299,40 @@ nav > ul > li > a:hover {
 .videoCont {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
+  margin-inline: 10px;
 }
 
+.videoCont > p{
+  grid-column: 1 / -1;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff0000;
+}
+
+#noResult{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  background-color: #EBE6FD;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  padding: 20px;
+  color: black;
+}
+
+
+
+
+
 .videoCard {
-  margin: 10px;
   overflow: hidden;
   text-overflow: clip;
+
 }
 
 .videoCard > a > img {
@@ -531,6 +577,7 @@ textarea {
 
 .commentSide {
   margin: 16px 0px;
+  margin-bottom: 0px;
   background-color: #f2f2f2;
   border-radius: 8px;
   padding: 10px;
@@ -567,7 +614,7 @@ textarea {
   color: white;
 }
 
-#commentButton:hover{
+#commentButton:hover {
   background-color: #4caf50;
 }
 
@@ -695,7 +742,6 @@ footer {
 
 .profilePageDiv {
   padding: 10px;
-  padding-inline: 30px;
   max-width: 1700px;
   margin: auto;
 }
@@ -716,8 +762,7 @@ footer {
   width: 128px;
   aspect-ratio: 1;
   border-radius: 50%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .profileMeta {
@@ -778,6 +823,10 @@ footer {
     margin: 0px;
   }
 
+  .videoCont > p{
+    margin: 10px;
+  }
+
   .videoCont {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -789,6 +838,9 @@ footer {
     width: 100%;
     justify-content: space-between;
     align-items: center;
+  }
+  .videoCard {
+    margin: 10px;
   }
 }
 

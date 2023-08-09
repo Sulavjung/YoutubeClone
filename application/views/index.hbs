@@ -1,29 +1,47 @@
 <main>
-
   <section>
     <div class="videoCont">
-      {{#each results}}
-        <div class="videoLinkCard">
-          <div class="videoCard" id={{id}}>
-            <a href="/posts/{{id}}"><img src="/{{thumbnail}}" alt={{id}} /></a>
-            <div class="videoMeta">
-              {{! Image }}
-              <a href="/users/profile/{{userId}}"><img
-                class="navProfileImg"
-                src="https://api.multiavatar.com/{{username}}.png"
-                alt=""
-              /></a>
-              <div>
-                {{! Title }}
-                <a href="/posts/{{id}}"><p class="videoTitle">{{title}}</p></a>
-                {{! Username }}
-                <a href="/users/profile/{{userId}}"><p class="videoUsername">{{username}}</p></a>
-                {{! These should be in column but it should be in row with the above img. }}
-              </div>
-            </div>
-          </div>
-        </div>
-      {{/each}}
+      {{#if searchKey}}
+        {{#if (isGreaterThan count 0) }}
+          <p>Search results for <i>"{{searchKey}}"</i></p>
+          {{#each searchResults}}
+            {{> videoLinkCard this}}
+          {{/each}}
+      
+          {{#if (isGreaterThan count 2)}}
+              {{!-- Do nothing --}}
+            {{else}}
+              <p class="suggestionText">
+                Here are other popular video.
+            </p>
+            {{#each results}}
+              {{> videoLinkCard this}}
+            {{/each}}
+          {{/if}}
+        {{else}}
+          {{#if (isEqualToZero count)}}
+            <p id="noResult">
+              Oops! No videos found for the "{{searchKey}}"
+            </p>
+            <p class="suggestionText">
+              Here are some of our most popular video.
+            </p>
+            {{#each results}}
+              {{> videoLinkCard this}}
+            {{/each}}
+          {{/if}}
+        {{/if}}
+      {{else}}
+           {{#each results}}
+              {{> videoLinkCard this}}
+            {{/each}}
+      {{/if}}
+      
+
+      
+       
+
+     
 
       {{! <div id="counterDiv">
         <!-- Here goes the Photo Counter -->

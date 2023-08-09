@@ -22,7 +22,7 @@ module.exports = {
 	getPostByID: async function (req, res, next){
 		var {id} = req.params;
 		try {
-			const [results, _] = await db.execute(`SELECT p.id, p.title,p.description,p.video, p.createdAt, u.username
+			const [results, _] = await db.execute(`SELECT p.id, p.title,p.description,p.video, p.createdAt, u.username, u.id AS userId
 			FROM posts p
 			JOIN users u
 			ON fk_userId=u.id
@@ -50,7 +50,7 @@ module.exports = {
 			const [results, _] = await db.execute(`SELECT p.id, p.title, p.description,p.thumbnail, p.video, p.createdAt,u.id AS userId, u.username
 			FROM posts p
 			JOIN users u ON p.fk_userId = u.id
-			ORDER BY p.createdAt DESC
+			ORDER BY RAND()
 			LIMIT 20;
 			`);
 
@@ -71,7 +71,7 @@ module.exports = {
 
 		try {
 			var [results, _] = await db.execute(`
-			SELECT c.id, c.text, c.createdAt, u.username
+			SELECT c.id, c.text, c.createdAt, u.username, u.id AS userId
 			FROM comments c
 			JOIN users u ON c.fk_userId = u.id
 			WHERE c.fk_posted = ?;

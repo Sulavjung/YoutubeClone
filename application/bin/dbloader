@@ -1,5 +1,5 @@
 "use strict";
-
+require("dotenv").config();
 const mysql = require("mysql2/promise");
 
 console.log(process.env);
@@ -66,18 +66,18 @@ async function makePostsTable(connection) {
   const [result, _] = await connection.query(
     // Posts Table SQL Goes here
     `CREATE TABLE  IF NOT EXISTS ${process.env.DB_NAME}.posts (
-      id int unsigned NOT NULL AUTO_INCREMENT,
-      title varchar(255) NOT NULL,
-      description varchar(45) NOT NULL,
-      video varchar(4096) NOT NULL,
-      thumbnail varchar(4096) NOT NULL,
-      createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      fk_userId int unsigned NOT NULL,
-      PRIMARY KEY (id),
-      UNIQUE KEY id_UNIQUE (id),
-      KEY post_author_idx (fk_userId),
-      CONSTRAINT post_author FOREIGN KEY (fk_userId) REFERENCES users (id) ON DELETE NO ACTION
+      id  int unsigned NOT NULL AUTO_INCREMENT,
+      title  varchar(255) NOT NULL,
+      description  mediumtext NOT NULL,
+      video  varchar(4096) NOT NULL,
+      thumbnail  varchar(4096) NOT NULL,
+      createdAt  datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updatedAt  datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      fk_userId  int unsigned NOT NULL,
+      PRIMARY KEY ( id ),
+      UNIQUE KEY  id_UNIQUE  ( id ),
+      KEY  post_author_idx  ( fk_userId ),
+      CONSTRAINT  post_author  FOREIGN KEY ( fk_userId ) REFERENCES  users  ( id ) ON DELETE NO ACTION
       ON UPDATE NO ACTION
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
     `
@@ -96,7 +96,7 @@ async function makeCommentsTable(connection) {
     `CREATE TABLE  IF NOT EXISTS ${process.env.DB_NAME}.comments (
       id int unsigned NOT NULL AUTO_INCREMENT,
       fk_userId int unsigned NOT NULL,
-      text varchar(45) NOT NULL,
+      text mediumtext NOT NULL,
       createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
       updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
       fk_posted int unsigned NOT NULL,

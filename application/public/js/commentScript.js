@@ -32,7 +32,7 @@ if(commentButton){
 				} else {
 					var htmlString = "";
 					htmlString = buildCommentDiv(data);
-					commentsList.innerHTML = htmlString;
+					commentsList.innerHTML += htmlString;
 					commentInput.value = "";
 					window.location.replace(`#message-${data.commentId}`)
 				}
@@ -51,12 +51,11 @@ function buildCommentDiv(data){
 	console.log(dateString);
 
 	return `<div class="commentMeta" id = "message-${data.commentId}">
-	<img
-	  class="navProfileImg"
-	  id="vidoeProfile"
-	  src="https://api.multiavatar.com/${data.username}.png"
-	  alt=""
-	/>
+	<a href="/users/profile/${data.userId}"><img
+                  class="navProfileImg"
+                  src="https://api.multiavatar.com/${data.username}.png"
+                  alt=""
+                /></a>
 	<div class="usernameAndComment">
 	  <p class="commentUsername">@${data.username} <span>${dateString}</span></p>
 	  <p class="comment">${data.commentText}</p>

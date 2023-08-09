@@ -68,7 +68,7 @@ router.get('/:id(\\d+)', getPostByID, getCommentsByPostId, getRecentPosts ,funct
 });
 
 //localhost:3000/posts/search?key=term
-router.get('/search', async function(req, res, next){
+router.get('/search', getRecentPosts, async function(req, res, next){
   var {key} = req.query;
   const searchValue = `%${key}%`
   try{
@@ -80,19 +80,23 @@ router.get('/search', async function(req, res, next){
       [searchValue]
     );    
 
-      if(results && results.length > 0){
-        res.locals.count = results.length;
-        res.locals.results = results;
+    if(results && results.length > 0){
+      res.locals.count = results.length;
+      res.locals.searchResults = results;
+      res.locals.searchKey = key;
+      return res.render('index', {title: key});
+    } else if(results && results.length == 0) {
+      res.locals.count = results.length;
+      res.locals.searchKey = key;
+      return req.session.save(function (err) {
+        if (err) {
+          next(err);
+        }
         return res.render('index', {title: key});
-      } else {
-        res.status(200).json({
-          count: 0,
-          results: []
-        })
-      }
-
-      return res.status(200).json(results);
-  }catch(err){
+      });
+    };
+      
+  } catch(err){
     next(err);
   }
 
