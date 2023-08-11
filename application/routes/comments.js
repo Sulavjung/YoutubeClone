@@ -18,7 +18,8 @@ router.post("/create", isLoggedInJSON, async function(req, res, next){
 				statusCode: 1,
 				commentText,
 				username,
-				commentId: insertResult.insertId
+				commentId: insertResult.insertId,
+				userId
 			})
 		} else { 
 			return res.status(500).json({
