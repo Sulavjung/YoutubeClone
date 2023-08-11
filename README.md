@@ -18,41 +18,41 @@ Please follow the instructions below and fill in the information requested when 
 # Install/Build Instructions
 
 ## Build Instructions
-1. Clone the repository:
+- [ ] 1. Clone the repository:
 
-2. Navigate to the application directory:
+- [ ] 2. Navigate to the application directory:
    
    ```bash
    cd csc317-code-Sulavjung/application/
    ```
 
-3. Install dependencies:
+- [ ] 3. Install dependencies:
 
    ```bash
    npm install
    ```
 
-4. Create a `.env` file with following environment variables.
+- [ ] 4. Create a `.env` file with following environment variables.
 	
 	```dotenv
-   DB_HOST=your_database_host
-   DB_USER=your_database_user
-   DB_PASSWORD=your_database_password
-   DB_NAME=your_database_name
+   DB_HOST="your_database_host"
+   DB_USER="your_database_user"
+   DB_PASSWORD="your_database_password"
+   DB_NAME="your_database_name"
    ```
 
-5. Build the database and tables:
+- [ ] 5. Build the database and tables:
 
    ```bash
    npm run builddb
    ```
 
 ## Run Instructions
-1. Start the application:
+- [ ] 1. Start the application:
 
    ```bash
    npm start
    ```
 
-2. Open your browser and visit [http://localhost:3000](http://localhost:3000).
+- [ ] 2. Open your browser and visit [http://localhost:3000](http://localhost:3000).
 
