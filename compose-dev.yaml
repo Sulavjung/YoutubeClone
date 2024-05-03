@@ -1,0 +1,19 @@
+services:
+  app:
+    entrypoint:
+    - sleep
+    - infinity
+    image: docker/dev-environments-javascript:stable-1
+    init: true
+    volumes:
+    - type: bind
+      source: /var/run/docker.sock
+      target: /var/run/docker.sock
+  
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "Apple@143"
+      MYSQL_DATABASE: "cs317db"
+    volumes:
+      - mysql-data:/var/lib/mysql

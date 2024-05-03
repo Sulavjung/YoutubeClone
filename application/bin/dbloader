@@ -122,6 +122,7 @@ async function makeCommentsTable(connection) {
 (async function main() {
   let connection = null;
   try {
+    console.log("Trying to get connected to the Database");
     connection = await getConnection();
     await makeDatabase(connection); // make DB
     //TODO make sure to change yourdbnamehere
