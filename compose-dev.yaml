@@ -1,15 +1,15 @@
 services:
   app:
-    entrypoint:
-    - sleep
-    - infinity
     image: docker/dev-environments-javascript:stable-1
+    entrypoint:
+      - sleep
+      - infinity
     init: true
     volumes:
-    - type: bind
-      source: /var/run/docker.sock
-      target: /var/run/docker.sock
-  
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+
   mysql:
     image: mysql:latest
     environment:
@@ -17,6 +17,6 @@ services:
       MYSQL_DATABASE: "cs317db"
     volumes:
       - mysql-data:/var/lib/mysql
-      
-  volumes:
-    mysql-data:
+
+volumes:
+  mysql-data:
