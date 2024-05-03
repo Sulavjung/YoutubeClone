@@ -5,6 +5,8 @@ services:
       - sleep
       - infinity
     init: true
+    ports:
+      - "3000:3000"
     volumes:
       - type: bind
         source: /var/run/docker.sock
